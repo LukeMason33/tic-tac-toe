@@ -21,11 +21,13 @@ class Game {
     for (var i = 0; i < this.winningSequences.length; i++) {
       if (this.playerOneSelections.includes(this.winningSequences[i]) || this.playerTwoSelections.includes(this.winningSequences[i])) {
         this.resetGame(clearBoard);
-      }  
+      }
     }
   }
 
   resetGame(clearBoard) {
     clearBoard = "";
+    this.playerOneSelections = [];
+    this.playerTwoSelections = [];
   }
 }
