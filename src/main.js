@@ -30,6 +30,11 @@ function placeTokenInBox() {
     event.target.innerHTML = `
       <p>${currentGame.playersTurn}</p>
       `;
-      currentGame.switchPlayers();
+      changePlayersTurn();
   }
+};
+
+function changePlayersTurn() {
+  currentGame.switchPlayers();
+  playersTurnIndicator.innerText = `It's ${currentGame.playersTurn}'s turn`;
 };
