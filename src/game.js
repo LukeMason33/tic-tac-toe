@@ -1,19 +1,19 @@
 class Game {
-  constrcutor(player1, player2) {
+  constructor(player1, player2) {
     this.playerOne = player1;
     this.playerTwo = player2;
     this.playerOneSelections = [];
     this.playerTwoSelections =[];
     this.winningSequences= [[1,2,3], [1,4,7], [3,6,9], [7,8,9], [4,5,6], [1,5,9], [3,5,7]];
-    this.playersTurn = player1;
+    this.playersTurn = player1.token;
   }
 
   switchPlayers() {
-    if (this.playersTurn === player1) {
-      this.playersTurn = player2;
+    if (this.playersTurn === this.playerOne.token) {
+      this.playersTurn = this.playerTwo.token;
     }
     else {
-      this.playersTurn = player1;
+      this.playersTurn = this.playerOne.token;
     }
   }
 
