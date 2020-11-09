@@ -9,6 +9,7 @@ var currentGame;
 
 var playersTurnIndicator = document.querySelector('h1');
 var gameBoard = document.querySelector('.game-board');
+var gameBoardBoxes = document.querySelectorAll('.sqaure');
 
 gameBoard.addEventListener('click', playPiece);
 
@@ -26,10 +27,14 @@ function playPiece() {
 
 
 function placeTokenInBox() {
+  var selectedBox;
   if (event.target.className === 'sqaure') {
+    selectedBox = event.target;
+    recordSelectedBoxes(selectedBox);
     event.target.innerHTML = `
       <p>${currentGame.playersTurn}</p>
       `;
+
       changePlayersTurn();
   }
 };
@@ -37,4 +42,23 @@ function placeTokenInBox() {
 function changePlayersTurn() {
   currentGame.switchPlayers();
   playersTurnIndicator.innerText = `It's ${currentGame.playersTurn}'s turn`;
+};
+
+function recordSelectedBoxes(box) {
+  var boxNumber;
+  for (var i = 0; i < gameBoardBoxes.length; i++) {
+    if (box === gameBoardBoxes[i]) {
+      boxNumber = i + 1;
+      recordEachPlayersSelections(boxNumber);
+    }
+  }
+};
+
+function recordEachPlayersSelections(box) {
+  if (currentGame.playersTurn === currentGame.playerOne.token) {
+    currentGame.playerOneSelections.push(box)
+  }
+  else {
+    currentGame.playerTwoSelections.push(box)
+  }
 };
