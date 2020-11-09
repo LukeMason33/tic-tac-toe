@@ -23,6 +23,7 @@ function createGame() {
 function playPiece() {
   event.preventDefault();
   placeTokenInBox();
+  currentGame.checkForWin();
 };
 
 
@@ -32,9 +33,7 @@ function placeTokenInBox() {
     selectedBox = event.target;
     recordSelectedBoxes(selectedBox);
     event.target.innerHTML = `
-      <p>${currentGame.playersTurn}</p>
-      `;
-
+      <p>${currentGame.playersTurn}</p>`;
       changePlayersTurn();
   }
 };
@@ -56,9 +55,9 @@ function recordSelectedBoxes(box) {
 
 function recordEachPlayersSelections(box) {
   if (currentGame.playersTurn === currentGame.playerOne.token) {
-    currentGame.playerOneSelections.push(box)
+    currentGame.playerOneSelections.push(box.toString());
   }
   else {
-    currentGame.playerTwoSelections.push(box)
+    currentGame.playerTwoSelections.push(box.toString());
   }
 };
