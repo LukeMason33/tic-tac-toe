@@ -17,22 +17,20 @@ class Game {
     }
   }
 
-  checkForWin(gameBoxes) {
-     var winningSequence;
-    for (var i = 0; i < this.winningSequences.length; i++) {
-      winningSequence = this.winningSequences[i].split('');
-      if (this.playerOneSelections.includes(winningSequence[0]) && this.playerOneSelections.includes(winningSequence[1]) && this.playerOneSelections.includes(winningSequence[2]) ) {
-        this.resetGame(gameBoxes);
-        this.playerOne.wins += 1;
-      }
-      else if (this.playerTwoSelections.includes(winningSequence[0]) && this.playerTwoSelections.includes(winningSequence[1]) && this.playerTwoSelections.includes(winningSequence[2])) {
-        this.resetGame(gameBoxes);
-        this.playerTwo.wins += 1;
-      }
+  playerOneWins () {
+      this.resetGame();
+      this.playerOne.wins += 1;
+      // this.playerOne.saveWinsToStorage();
     }
+
+  playerTwoWins () {
+    this.resetGame();
+    this.playerTwo.wins += 1;
+    // this.playerTwo.saveWinsToStorage();
   }
 
-  resetGame(gameBoxes) {
+
+  resetGame() {
     this.playerOneSelections = [];
     this.playerTwoSelections = [];
   }

@@ -6,21 +6,42 @@ var gameBoardBoxes = document.querySelectorAll('.sqaure');
 var playerOneWinCounter = document.querySelector('.player-one-wins');
 var playerTwoWinCounter = document.querySelector('.player-two-wins');
 
-gameBoard.addEventListener('click', playPiece);
+gameBoard.addEventListener('click', playTurn);
+window.onload = createGame();
 
 function createGame() {
   var playerOne = new Player('player1', '🔶');
   var playerTwo = new Player('player2', '🔷');
   currentGame = new Game(playerOne, playerTwo);
-  playerOneWinCounter.innerText = `${currentGame.playerOne.wins} Wins`;
-  playerTwoWinCounter.innerText = `${currentGame.playerTwo.wins} Wins`;
-  playersTurnIndicator.innerText = `It's ${currentGame.playersTurn}'s turn`
+  displayWins();
+  playersTurnIndicator.innerText = `It's ${currentGame.playersTurn}'s turn`;
 };
 
-function playPiece() {
+function checkForWin() {
+  var winningSequence;
+ for (var i = 0; i < currentGame.winningSequences.length; i++) {
+   winningSequence = currentGame.winningSequences[i].split('');
+   checkWhichPlayerWon(winningSequence);
+   }
+ };
+
+function checkWhichPlayerWon (winningSequence) {
+   if (currentGame.playerOneSelections.includes(winningSequence[0]) && currentGame.playerOneSelections.includes(winningSequence[1]) && currentGame.playerOneSelections.includes(winningSequence[2]) ) {
+     currentGame.playerOneWins();
+     playersTurnIndicator.innerText = `${currentGame.playerOne.token} WINS`;
+     setTimeout(clearGameBoard, 1500);
+   }
+   else if (currentGame.playerTwoSelections.includes(winningSequence[0]) && currentGame.playerTwoSelections.includes(winningSequence[1]) && currentGame.playerTwoSelections.includes(winningSequence[2])) {
+     currentGame.playerTwoWins();
+     playersTurnIndicator.innerText = `${currentGame.playerTwo.token} WINS`;
+     setTimeout(clearGameBoard, 1500);
+   }
+ };
+
+function playTurn() {
   event.preventDefault();
   placeTokenInBox();
-  currentGame.checkForWin();
+  checkForWin();
 };
 
 
@@ -67,8 +88,16 @@ function recordEachPlayersSelections(box) {
   }
 };
 
-function resetGameOnWin() {
+function clearGameBoard() {
+  playersTurnIndicator.innerText = `It's ${currentGame.playersTurn}'s turn`;
   for (var i = 0; i < gameBoardBoxes.length; i++) {
     gameBoardBoxes[i].innerHTML = '';
+    gameBoardBoxes[i].classList.remove('played');
+    displayWins();
   }
 };
+
+function displayWins () {
+  playerOneWinCounter.innerText = `${currentGame.playerOne.wins} Wins`;
+  playerTwoWinCounter.innerText = `${currentGame.playerTwo.wins} Wins`;
+}
