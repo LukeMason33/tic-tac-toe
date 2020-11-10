@@ -17,10 +17,29 @@ function createGame() {
   playersTurnIndicator.innerText = `It's ${currentGame.playersTurn}'s turn`
 };
 
+function checkForWin() {
+  var winningSequence;
+ for (var i = 0; i < currentGame.winningSequences.length; i++) {
+   winningSequence = currentGame.winningSequences[i].split('');
+   checkWhichPlayerWon(winningSequence);
+   }
+ };
+
+function checkWhichPlayerWon (winningSequence) {
+   if (currentGame.playerOneSelections.includes(winningSequence[0]) && currentGame.playerOneSelections.includes(winningSequence[1]) && currentGame.playerOneSelections.includes(winningSequence[2]) ) {
+     currentGame.PlayerOneWins();
+     playersTurnIndicator.innerText = `${currentGame.playerOne.token} WINS`;
+   }
+   else if (currentGame.playerTwoSelections.includes(winningSequence[0]) && currentGame.playerTwoSelections.includes(winningSequence[1]) && currentGame.playerTwoSelections.includes(winningSequence[2])) {
+     currentGame.playerTwoWins();
+     playersTurnIndicator.innerText = `${currentGame.playerTwo.token} WINS`;
+   }
+ };
+
 function playPiece() {
   event.preventDefault();
   placeTokenInBox();
-  currentGame.checkForWin(gameBoardBoxes);
+  checkForWin();
 };
 
 
