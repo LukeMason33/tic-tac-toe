@@ -25,6 +25,14 @@ h3 {
   font-size: x-large;
 }
 
+button {
+  margin-top: 20%;
+  width: 40%;
+  height: 20%;
+  font-size: xx-large;
+  background: linear-gradient(180deg, rgba(182,72,250,0.9906337535014006) 7%, rgba(246,148,0,1) 43%, rgba(253,255,176,1) 97%);
+}
+
 
 .game-board-area {
     width: 50%;
@@ -86,4 +94,8 @@ p {
 .player-one,
 .player-two {
   width: 25%;
+}
+
+.hidden {
+  display: none;
 }

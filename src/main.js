@@ -1,13 +1,15 @@
 var currentGame;
 
 var playersTurnIndicator = document.querySelector('h1');
+var playGameButton = document.querySelector('button');
 var gameBoard = document.querySelector('.game-board');
 var gameBoardBoxes = document.querySelectorAll('.sqaure');
 var playerOneWinCounter = document.querySelector('.player-one-wins');
 var playerTwoWinCounter = document.querySelector('.player-two-wins');
 
-gameBoard.addEventListener('click', playTurn);
 window.onload = createGame();
+playGameButton.addEventListener('click', displayGameBoard);
+gameBoard.addEventListener('click', playTurn);
 
 function createGame() {
   var playerOne = new Player('player1', '🔶');
@@ -17,6 +19,12 @@ function createGame() {
   currentGame = new Game(playerOne, playerTwo);
   displayWins();
   playersTurnIndicator.innerText = `It's ${currentGame.playersTurn}'s turn`;
+};
+
+function displayGameBoard() {
+  gameBoard.classList.remove('hidden');
+  playersTurnIndicator.classList.remove('hidden');
+  playGameButton.classList.add('hidden');
 };
 
 function checkForWin() {
