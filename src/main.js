@@ -14,7 +14,7 @@ function createGame() {
   var playerTwo = new Player('player2', '🔷');
   currentGame = new Game(playerOne, playerTwo);
   displayWins();
-  playersTurnIndicator.innerText = `It's ${currentGame.playersTurn}'s turn`
+  playersTurnIndicator.innerText = `It's ${currentGame.playersTurn}'s turn`;
 };
 
 function checkForWin() {
@@ -29,12 +29,12 @@ function checkWhichPlayerWon (winningSequence) {
    if (currentGame.playerOneSelections.includes(winningSequence[0]) && currentGame.playerOneSelections.includes(winningSequence[1]) && currentGame.playerOneSelections.includes(winningSequence[2]) ) {
      currentGame.playerOneWins();
      playersTurnIndicator.innerText = `${currentGame.playerOne.token} WINS`;
-     clearGameBoard();
+     setTimeout(clearGameBoard, 1500);
    }
    else if (currentGame.playerTwoSelections.includes(winningSequence[0]) && currentGame.playerTwoSelections.includes(winningSequence[1]) && currentGame.playerTwoSelections.includes(winningSequence[2])) {
      currentGame.playerTwoWins();
      playersTurnIndicator.innerText = `${currentGame.playerTwo.token} WINS`;
-     clearGameBoard();
+     setTimeout(clearGameBoard, 1500);
    }
  };
 
@@ -89,6 +89,7 @@ function recordEachPlayersSelections(box) {
 };
 
 function clearGameBoard() {
+  playersTurnIndicator.innerText = `It's ${currentGame.playersTurn}'s turn`;
   for (var i = 0; i < gameBoardBoxes.length; i++) {
     gameBoardBoxes[i].innerHTML = '';
     gameBoardBoxes[i].classList.remove('played');
