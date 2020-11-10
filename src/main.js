@@ -6,7 +6,8 @@ var gameBoardBoxes = document.querySelectorAll('.sqaure');
 var playerOneWinCounter = document.querySelector('.player-one-wins');
 var playerTwoWinCounter = document.querySelector('.player-two-wins');
 
-gameBoard.addEventListener('click', playPiece);
+gameBoard.addEventListener('click', playTurn);
+window.onload = createGame();
 
 function createGame() {
   var playerOne = new Player('player1', '🔶');
@@ -28,18 +29,19 @@ function checkWhichPlayerWon (winningSequence) {
    if (currentGame.playerOneSelections.includes(winningSequence[0]) && currentGame.playerOneSelections.includes(winningSequence[1]) && currentGame.playerOneSelections.includes(winningSequence[2]) ) {
      currentGame.playerOneWins();
      playersTurnIndicator.innerText = `${currentGame.playerOne.token} WINS`;
+     clearGameBoard();
    }
    else if (currentGame.playerTwoSelections.includes(winningSequence[0]) && currentGame.playerTwoSelections.includes(winningSequence[1]) && currentGame.playerTwoSelections.includes(winningSequence[2])) {
      currentGame.playerTwoWins();
      playersTurnIndicator.innerText = `${currentGame.playerTwo.token} WINS`;
+     clearGameBoard();
    }
  };
 
-function playPiece() {
+function playTurn() {
   event.preventDefault();
   placeTokenInBox();
   checkForWin();
-  displayWins();
 };
 
 
@@ -89,6 +91,8 @@ function recordEachPlayersSelections(box) {
 function clearGameBoard() {
   for (var i = 0; i < gameBoardBoxes.length; i++) {
     gameBoardBoxes[i].innerHTML = '';
+    gameBoardBoxes[i].classList.remove('played');
+    displayWins();
   }
 };
 
