@@ -1,32 +1,38 @@
 class Game {
-  constrcutor(player1, player2) {
+  constructor(player1, player2) {
     this.playerOne = player1;
     this.playerTwo = player2;
     this.playerOneSelections = [];
     this.playerTwoSelections =[];
-    this.winningSequences= [[1,2,3], [1,4,7], [3,6,9], [7,8,9], [4,5,6], [1,5,9], [3,5,7]];
-    this.playersTurn = player1;
+    this.winningSequences= ['123', '147', '369', '789', '456', '159', '357', '258'];
+    this.playersTurn = player1.token;
   }
 
   switchPlayers() {
-    if (this.playersTurn === player1) {
-      this.playersTurn = player2;
+    if (this.playersTurn === this.playerOne.token) {
+      this.playersTurn = this.playerTwo.token;
     }
     else {
-      this.playersTurn = player1;
+      this.playersTurn = this.playerOne.token;
     }
   }
 
-  checkForWin() {
+  checkForWin(gameBoxes) {
+     var winningSequence;
     for (var i = 0; i < this.winningSequences.length; i++) {
-      if (this.playerOneSelections.includes(this.winningSequences[i]) || this.playerTwoSelections.includes(this.winningSequences[i])) {
-        this.resetGame(clearBoard);
+      winningSequence = this.winningSequences[i].split('');
+      if (this.playerOneSelections.includes(winningSequence[0]) && this.playerOneSelections.includes(winningSequence[1]) && this.playerOneSelections.includes(winningSequence[2]) ) {
+        this.resetGame(gameBoxes);
+        this.playerOne.wins += 1;
+      }
+      else if (this.playerTwoSelections.includes(winningSequence[0]) && this.playerTwoSelections.includes(winningSequence[1]) && this.playerTwoSelections.includes(winningSequence[2])) {
+        this.resetGame(gameBoxes);
+        this.playerTwo.wins += 1;
       }
     }
   }
 
-  resetGame(clearBoard) {
-    clearBoard = "";
+  resetGame(gameBoxes) {
     this.playerOneSelections = [];
     this.playerTwoSelections = [];
   }
