@@ -4,12 +4,12 @@
 
 ## Overview
 If you enjoy the timeless game of tic-tac-toe then look no further! Here is a web app that will bring your tic-tac-toe fantasy to life! Start by opening the webpage. Once open, you will see on the left side of the screen is one player that using the "🔶" token.
-!(file:///Users/lukemason/Desktop/Screen%20Shot%202020-11-10%20at%204.32.43%20PM.png)
+![](file:///Users/lukemason/Desktop/Screen%20Shot%202020-11-10%20at%204.32.43%20PM.png)
 On the rightmost side of the screen you will see another player that's using the "🔷" token. Below those tokens are the win counters for that specific counter, so if you're new, both of those should be set at 0.
 To start playing the game, click that very in-yo-face button that says "PLAY GAME". Once that button is clicked the game board shall appear!
-!(file:///Users/lukemason/Desktop/Screen%20Shot%202020-11-10%20at%204.32.05%20PM.png)
+![] (file:///Users/lukemason/Desktop/Screen%20Shot%202020-11-10%20at%204.32.05%20PM.png)
 Above that game board is an indicator that will you, the user, which players turn it is. Every time a player clicks on one of the boxes, that players token will be placed in that box, making it easy for you to see which player has played where, and to also ensure that you won't click that box again! (There will be an alert if you do this so don't you worry). If one of the players gets 3 of their tokens consecutively, then that turn indicator will let you know that that player won!
-!(file:///Users/lukemason/Desktop/Screen%20Shot%202020-11-10%20at%204.33.14%20PM.png)
+![] (file:///Users/lukemason/Desktop/Screen%20Shot%202020-11-10%20at%204.33.14%20PM.png)
 That win will then be counted and displayed for that given player, and you will be given a freshly cleaned game board to keep on playing! If at any point you need to step away from the screen, but don't want your wins to go away...don't you worry! Your wins are saved on your local screen and will always display whenever you open the page back up. So what are you waiting for, let's get tic-ing and tac-ing and toe-ing!
 
 ## Technologies Used
