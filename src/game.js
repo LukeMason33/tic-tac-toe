@@ -20,13 +20,13 @@ class Game {
   playerOneWins () {
       this.resetGame();
       this.playerOne.wins += 1;
-      // this.playerOne.saveWinsToStorage();
+      this.playerOne.saveWinsToStorage();
     }
 
   playerTwoWins () {
     this.resetGame();
     this.playerTwo.wins += 1;
-    // this.playerTwo.saveWinsToStorage();
+    this.playerTwo.saveWinsToStorage();
   }
 
 

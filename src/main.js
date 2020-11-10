@@ -11,7 +11,9 @@ window.onload = createGame();
 
 function createGame() {
   var playerOne = new Player('player1', '🔶');
+  playerOne.retrieveWinsFromStorage();
   var playerTwo = new Player('player2', '🔷');
+  playerTwo.retrieveWinsFromStorage();
   currentGame = new Game(playerOne, playerTwo);
   displayWins();
   playersTurnIndicator.innerText = `It's ${currentGame.playersTurn}'s turn`;
@@ -100,4 +102,4 @@ function clearGameBoard() {
 function displayWins () {
   playerOneWinCounter.innerText = `${currentGame.playerOne.wins} Wins`;
   playerTwoWinCounter.innerText = `${currentGame.playerTwo.wins} Wins`;
-}
+};

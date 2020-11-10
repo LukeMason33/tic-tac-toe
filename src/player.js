@@ -6,11 +6,16 @@ class Player {
   }
 
   saveWinsToStorage() {
-    // var locallyStoredWins = this.wins;
-    // localStorage.setItem(this.id, JSON.stringify(locallyStoredWins));
+    var locallyStoredWins = this.wins;
+    localStorage.setItem(this.id, JSON.stringify(locallyStoredWins));
   }
 
   retrieveWinsFromStorage() {
-
+    var storedWins = localStorage.getItem(this.id);
+    var parsedStoredWins = JSON.parse(storedWins);
+    this.wins = parsedStoredWins;
+    if (this.wins === null) {
+      this.wins = 0;
+    }
   }
 }
