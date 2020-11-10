@@ -52,6 +52,7 @@ function playTurn() {
   event.preventDefault();
   placeTokenInBox();
   checkForWin();
+  indicateWhenGameIsTie();
 };
 
 
@@ -110,4 +111,12 @@ function clearGameBoard() {
 function displayWins () {
   playerOneWinCounter.innerText = `${currentGame.playerOne.wins} Wins`;
   playerTwoWinCounter.innerText = `${currentGame.playerTwo.wins} Wins`;
+};
+
+function indicateWhenGameIsTie() {
+  if (currentGame.playerOneSelections.length + currentGame.playerTwoSelections.length === 9) {
+    playersTurnIndicator.innerText = `IT'S A DRAW`;
+    currentGame.resetGame();
+    setTimeout(clearGameBoard, 1500);
+  }
 };
