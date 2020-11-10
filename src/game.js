@@ -34,4 +34,5 @@ class Game {
     this.playerOneSelections = [];
     this.playerTwoSelections = [];
   }
+
 }
