@@ -47,6 +47,15 @@ div {
     border-width: thick;
     border-color: black;
     border: solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  font-size: 250%;
 }
 
 #box-1,
