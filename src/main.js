@@ -111,7 +111,3 @@ function displayWins () {
   playerOneWinCounter.innerText = `${currentGame.playerOne.wins} Wins`;
   playerTwoWinCounter.innerText = `${currentGame.playerTwo.wins} Wins`;
 };
-
-function indicateGameIsDraw() {
-  if (gameBoardBoxes.length === 0;)
-}
