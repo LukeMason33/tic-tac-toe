@@ -17,12 +17,12 @@ class Game {
     }
   }
 
-  PlayerOneWins () {
+  playerOneWins () {
       this.resetGame();
       this.playerOne.wins += 1;
     }
 
-  PlayerTwoWins () {
+  playerTwoWins () {
     this.resetGame();
     this.playerTwo.wins += 1;
   }

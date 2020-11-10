@@ -12,8 +12,7 @@ function createGame() {
   var playerOne = new Player('player1', '🔶');
   var playerTwo = new Player('player2', '🔷');
   currentGame = new Game(playerOne, playerTwo);
-  playerOneWinCounter.innerText = `${currentGame.playerOne.wins} Wins`;
-  playerTwoWinCounter.innerText = `${currentGame.playerTwo.wins} Wins`;
+  displayWins();
   playersTurnIndicator.innerText = `It's ${currentGame.playersTurn}'s turn`
 };
 
@@ -27,7 +26,7 @@ function checkForWin() {
 
 function checkWhichPlayerWon (winningSequence) {
    if (currentGame.playerOneSelections.includes(winningSequence[0]) && currentGame.playerOneSelections.includes(winningSequence[1]) && currentGame.playerOneSelections.includes(winningSequence[2]) ) {
-     currentGame.PlayerOneWins();
+     currentGame.playerOneWins();
      playersTurnIndicator.innerText = `${currentGame.playerOne.token} WINS`;
    }
    else if (currentGame.playerTwoSelections.includes(winningSequence[0]) && currentGame.playerTwoSelections.includes(winningSequence[1]) && currentGame.playerTwoSelections.includes(winningSequence[2])) {
@@ -40,6 +39,7 @@ function playPiece() {
   event.preventDefault();
   placeTokenInBox();
   checkForWin();
+  displayWins();
 };
 
 
@@ -85,3 +85,14 @@ function recordEachPlayersSelections(box) {
     currentGame.playerTwoSelections.push(box.toString());
   }
 };
+
+function clearGameBoard() {
+  for (var i = 0; i < gameBoardBoxes.length; i++) {
+    gameBoardBoxes[i].innerHTML = '';
+  }
+};
+
+function displayWins () {
+  playerOneWinCounter.innerText = `${currentGame.playerOne.wins} Wins`;
+  playerTwoWinCounter.innerText = `${currentGame.playerTwo.wins} Wins`;
+}
