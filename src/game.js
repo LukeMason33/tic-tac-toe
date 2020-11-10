@@ -33,6 +33,10 @@ class Game {
   }
 
   resetGame(gameBoxes) {
+    for (var i = 0; i < gameBoxes.length; i++) {
+      gameBoxes[i].innerHTML = '';
+      gameBoxes[i].classList.remove('played');
+    }
     this.playerOneSelections = [];
     this.playerTwoSelections = [];
   }

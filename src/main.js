@@ -20,7 +20,7 @@ function createGame() {
 function playPiece() {
   event.preventDefault();
   placeTokenInBox();
-  currentGame.checkForWin();
+  currentGame.checkForWin(gameBoardBoxes);
 };
 
 
@@ -64,11 +64,5 @@ function recordEachPlayersSelections(box) {
   }
   else {
     currentGame.playerTwoSelections.push(box.toString());
-  }
-};
-
-function resetGameOnWin() {
-  for (var i = 0; i < gameBoardBoxes.length; i++) {
-    gameBoardBoxes[i].innerHTML = '';
   }
 };
