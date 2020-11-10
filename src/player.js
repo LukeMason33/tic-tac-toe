@@ -11,8 +11,11 @@ class Player {
   }
 
   retrieveWinsFromStorage() {
-    var storedWins = localStorage.getItem(this.id.key());
+    var storedWins = localStorage.getItem(this.id);
     var parsedStoredWins = JSON.parse(storedWins);
     this.wins = parsedStoredWins;
+    if (this.wins === null) {
+      this.wins = 0;
+    }
   }
 }
