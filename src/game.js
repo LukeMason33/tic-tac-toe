@@ -29,10 +29,8 @@ class Game {
     this.playerTwo.saveWinsToStorage();
   }
 
-
   resetGame() {
     this.playerOneSelections = [];
     this.playerTwoSelections = [];
   }
-
-}
+};
