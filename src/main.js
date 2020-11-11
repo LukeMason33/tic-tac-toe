@@ -55,13 +55,11 @@ function playTurn() {
   indicateWhenGameIsTie();
 };
 
-
 function placeTokenInBox() {
   var selectedBox;
   if (event.target.className === 'sqaure') {
     selectedBox = event.target;
-    event.target.innerHTML = `
-      <p>${currentGame.playersTurn}</p>`;
+    event.target.innerHTML = `<p>${currentGame.playersTurn}</p>`;
     recordSelectedBoxes(selectedBox);
     disablePlayedBox(selectedBox);
     changePlayersTurn();
