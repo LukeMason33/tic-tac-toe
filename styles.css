@@ -2,7 +2,6 @@ html {
   width: 100%;
   height: 100%;
   background: linear-gradient(180deg, rgba(182,72,250,0.9906337535014006) 7%, rgba(246,148,0,1) 43%, rgba(253,255,176,1) 97%);
-
 }
 
 body {
@@ -32,7 +31,6 @@ button {
   font-size: xx-large;
   background: linear-gradient(180deg, rgba(182,72,250,0.9906337535014006) 7%, rgba(246,148,0,1) 43%, rgba(253,255,176,1) 97%);
 }
-
 
 .game-board-area {
     width: 50%;
@@ -89,7 +87,6 @@ p {
 #box-9 {
   border-bottom: none;
 }
-
 
 .player-one,
 .player-two {
